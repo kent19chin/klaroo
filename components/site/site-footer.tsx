@@ -93,13 +93,20 @@ export function SiteFooter({
             <span>
               © {new Date().getFullYear()} {site.name}. {site.tagline}.
             </span>
-            {variant === "full" && (
-              // TODO: Privacy / Terms pages don't exist yet
-              <div className="flex gap-7">
-                <span>Privacy</span>
-                <span>Terms</span>
-              </div>
-            )}
+            <div className="flex gap-7">
+              <Link
+                href="/privacy"
+                className="transition-colors hover:text-white"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/terms"
+                className="transition-colors hover:text-white"
+              >
+                Terms
+              </Link>
+            </div>
           </div>
         </div>
       </div>

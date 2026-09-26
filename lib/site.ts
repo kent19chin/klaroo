@@ -27,6 +27,16 @@ export const site = {
   },
 
   minimumContractMonths: "[X]",
+
+  // Used by /terms and /privacy. Change here and both pages update.
+  legal: {
+    lastUpdated: "25 September 2026",
+    governingLaw: "Malaysia",
+    arbitrationSeat: "Kuala Lumpur",
+    monthlyNoticeDays: 30, // notice to cancel a monthly plan
+    invoiceDueDays: 7, // monthly invoices
+    auditRefundPercent: 50, // refund if a one-time check is cancelled mid-work
+  },
 } as const
 
 export const bookingHref = `mailto:${site.contact.email}?subject=${encodeURIComponent(
