@@ -1,15 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import {
-  MotionConfig,
-  animate,
-  motion,
-  useInView,
-  useMotionValue,
-  useTransform,
-  type Variants,
-} from "motion/react"
+import { MotionConfig, motion, type Variants } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -115,35 +106,5 @@ export function DrawLine({ className }: { className?: string }) {
       viewport={{ once: true, margin: "0px 0px -80px 0px" }}
       transition={{ duration: 1.4, ease }}
     />
-  )
-}
-
-/** Counts up from 0 to `to` the first time it scrolls into view. */
-export function CountUp({
-  to,
-  suffix = "",
-  className,
-}: {
-  to: number
-  suffix?: string
-  className?: string
-}) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true, margin: "0px 0px -60px 0px" })
-  // Starts at the final value so server HTML (and crawlers) see the real number.
-  const value = useMotionValue(to)
-  const text = useTransform(value, (v) => `${Math.round(v)}${suffix}`)
-
-  useEffect(() => {
-    if (!inView) return
-    value.set(0)
-    const controls = animate(value, to, { duration: 1.4, ease })
-    return () => controls.stop()
-  }, [inView, to, value])
-
-  return (
-    <motion.span ref={ref} className={className}>
-      {text}
-    </motion.span>
   )
 }
