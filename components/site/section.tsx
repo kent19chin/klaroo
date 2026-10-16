@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 
-/** Full-bleed coloured band with the site's 1440px content column inside. */
+/** Full-width section with the site's content column inside. */
 export function Section({
   className,
   innerClassName,
@@ -8,10 +8,10 @@ export function Section({
   ...props
 }: React.ComponentProps<"section"> & { innerClassName?: string }) {
   return (
-    <section className={cn("scroll-mt-20", className)} {...props}>
+    <section className={cn("relative scroll-mt-20", className)} {...props}>
       <div
         className={cn(
-          "mx-auto max-w-[1440px] px-5 py-16 md:px-10 md:py-20 lg:px-20 lg:py-[92px]",
+          "mx-auto max-w-[1240px] px-5 py-20 md:px-8 lg:py-28",
           innerClassName
         )}
       >
@@ -21,7 +21,8 @@ export function Section({
   )
 }
 
-export function Eyebrow({
+/** Mono uppercase section label. */
+export function Kicker({
   className,
   children,
 }: {
@@ -31,7 +32,7 @@ export function Eyebrow({
   return (
     <p
       className={cn(
-        "text-[13px] font-extrabold tracking-[1.4px] text-kicker uppercase",
+        "font-mono text-xs font-semibold tracking-[0.15em] text-clarity uppercase",
         className
       )}
     >
@@ -40,30 +41,58 @@ export function Eyebrow({
   )
 }
 
-/** Eyebrow + H2 + optional subhead, the opening of most sections. */
+/** Kicker + H2 + optional sub, the opening of most sections. */
 export function SectionIntro({
-  eyebrow,
+  kicker,
   title,
   children,
   className,
+  align = "left",
 }: {
-  eyebrow?: string
+  kicker?: string
   title: React.ReactNode
   children?: React.ReactNode
   className?: string
+  align?: "left" | "center"
 }) {
   return (
-    <div className={cn("flex max-w-[760px] flex-col gap-4", className)}>
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="font-heading text-[32px] leading-[1.14] font-bold tracking-[-1px] text-balance text-ink md:text-[42px]">
+    <div
+      className={cn(
+        "flex max-w-[760px] flex-col gap-4",
+        align === "center" && "mx-auto items-center text-center",
+        className
+      )}
+    >
+      {kicker && <Kicker>{kicker}</Kicker>}
+      <h2 className="text-[32px] leading-[1.15] font-extrabold tracking-[-0.02em] text-balance text-paper md:text-[48px]">
         {title}
       </h2>
       {children && (
-        <p className="text-[17px] leading-relaxed text-slate md:text-lg">
+        <p className="text-base leading-[1.6] text-mist md:text-lg">
           {children}
         </p>
       )}
     </div>
+  )
+}
+
+/** Soft Clarity Blue radial glow (decorative). */
+export function Glow({
+  className,
+  color = "clarity",
+}: {
+  className?: string
+  color?: "clarity" | "leap"
+}) {
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        "pointer-events-none absolute -z-10 rounded-full blur-3xl",
+        color === "clarity" ? "bg-clarity/15" : "bg-leap/10",
+        className
+      )}
+    />
   )
 }
 
@@ -114,32 +143,50 @@ export function FadeUp({
   )
 }
 
-/** Headline whose words rise in one by one on load (CSS only). */
+/**
+ * Headline whose words rise in one by one on load (CSS only). Pass several
+ * `lines` to break the heading; `accentLine` gets `accentClassName`.
+ */
 export function WordsIn({
-  text,
+  lines,
   className,
   as: Component = "h1",
   delay = 0,
+  accentLine,
+  accentClassName = "text-clarity",
 }: {
-  text: string
+  lines: string[]
   className?: string
   as?: "h1" | "h2"
   delay?: number
+  accentLine?: number
+  accentClassName?: string
 }) {
-  const words = text.split(" ")
+  let index = 0
   return (
-    <Component className={className} aria-label={text}>
-      {words.map((word, i) => (
-        <span key={i} aria-hidden>
-          <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
-            <span
-              className="inline-block animate-word-up"
-              style={{ animationDelay: `${delay + i * 0.06}s` }}
-            >
-              {word}
-            </span>
-          </span>
-          {i < words.length - 1 && " "}
+    <Component className={className} aria-label={lines.join(" ")}>
+      {lines.map((line, li) => (
+        <span
+          key={li}
+          aria-hidden
+          className={cn("block", li === accentLine && accentClassName)}
+        >
+          {line.split(" ").map((word, wi, arr) => {
+            const i = index++
+            return (
+              <span key={wi}>
+                <span className="inline-block overflow-hidden pb-[0.1em] align-bottom">
+                  <span
+                    className="inline-block animate-word-up"
+                    style={{ animationDelay: `${delay + i * 0.06}s` }}
+                  >
+                    {word}
+                  </span>
+                </span>
+                {wi < arr.length - 1 && " "}
+              </span>
+            )
+          })}
         </span>
       ))}
     </Component>

@@ -48,7 +48,7 @@ export function LegalToc({ items }: { items: TocItem[] }) {
               href={`#${item.id}`}
               className={cn(
                 "relative flex gap-3 rounded-lg py-1.5 pr-2 pl-4 text-sm leading-snug transition-colors",
-                isActive ? "font-bold text-ink" : "text-caption hover:text-ink"
+                isActive ? "font-bold text-paper" : "text-fog hover:text-paper"
               )}
             >
               {isActive && (
@@ -58,7 +58,7 @@ export function LegalToc({ items }: { items: TocItem[] }) {
                   transition={{ type: "spring", stiffness: 400, damping: 34 }}
                 />
               )}
-              <span className="w-5 shrink-0 font-heading tabular-nums opacity-60">
+              <span className="w-5 shrink-0 font-mono text-xs leading-5 tabular-nums opacity-70">
                 {i + 1}.
               </span>
               {item.title}
@@ -72,8 +72,8 @@ export function LegalToc({ items }: { items: TocItem[] }) {
   return (
     <>
       {/* Mobile / tablet: collapsible */}
-      <details className="group rounded-2xl border border-line bg-white lg:hidden">
-        <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-sm font-bold text-ink">
+      <details className="group rounded-2xl border border-line bg-ink lg:hidden">
+        <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-sm font-bold text-paper">
           On this page
           <ChevronDown
             aria-hidden
@@ -85,7 +85,7 @@ export function LegalToc({ items }: { items: TocItem[] }) {
 
       {/* Desktop: sticky */}
       <nav aria-label="On this page" className="sticky top-28 hidden lg:block">
-        <p className="mb-3 pl-4 text-[13px] font-extrabold tracking-[1.4px] text-kicker uppercase">
+        <p className="mb-3 pl-4 font-mono text-xs font-semibold tracking-[0.15em] text-clarity uppercase">
           On this page
         </p>
         {list}

@@ -5,9 +5,9 @@ import { LegalPage, type LegalSection } from "@/components/site/legal-page"
 import { site } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions",
+  title: "Terms of Service",
   description:
-    "The terms that apply when you use the klarooo website or buy a visibility check or monthly plan from us.",
+    "The terms that apply when you use the klarooo website, request a free AI audit or subscribe to a monthly AI search package.",
 }
 
 const { legal } = site
@@ -15,10 +15,10 @@ const email = site.contact.email
 
 const summary = [
   "Our services are for businesses, not personal or household use.",
-  "Nobody can guarantee a spot in an AI answer, and we don't either.",
-  "One-time checks are paid upfront. Cancel before kickoff for a full refund.",
-  `Monthly plans run for an initial ${site.minimumContractMonths}-month period, then month to month with ${legal.monthlyNoticeDays} days' notice.`,
-  "Once you've paid, the reports and content we make for you are yours.",
+  "Nobody can guarantee a #1 spot in an AI answer. We guarantee the work.",
+  `Packages are monthly, billed in CAD, with a ${site.minimumTermMonths}-month minimum.`,
+  "After the minimum, you can switch packages or stop at any time.",
+  "Once you've paid, the pages and content we make for you are yours.",
   `These terms are governed by the laws of ${legal.governingLaw}.`,
 ]
 
@@ -76,19 +76,26 @@ const sections: LegalSection[] = [
     content: (
       <>
         <p>
-          We offer the following services, described in more detail on our{" "}
-          <Link href="/pricing">pricing page</Link> and in any proposal we send
-          you:
+          We offer the following services, described in more detail in the{" "}
+          <Link href="/#packages">Packages</Link> section of our website and in
+          any proposal we send you:
         </p>
         <ul>
           <li>
-            <strong>Visibility Snapshot</strong> and <strong>Full Audit</strong>
-            : one-time checks of how AI assistants describe and recommend your
-            business, with a written report.
+            <strong>Free AI audit</strong>: a no-obligation review of how AI
+            assistants answer a few of your key industry questions. It&apos;s
+            free, and requesting one doesn&apos;t commit you to anything.
           </li>
           <li>
-            <strong>Sustain</strong> and <strong>Grow</strong>: monthly plans
-            where we keep checking those answers and do work to improve them.
+            <strong>Package A: {site.packages.a.name}</strong> and{" "}
+            <strong>Package B: {site.packages.b.name}</strong>: monthly AI
+            search packages where we track your buyer questions, carry out the
+            optimisation work included in your package, and report the results
+            each month.
+          </li>
+          <li>
+            <strong>Add-ons</strong>, such as Persona Predictions, which you can
+            add to either package.
           </li>
         </ul>
         <p>
@@ -177,93 +184,77 @@ const sections: LegalSection[] = [
   },
   {
     id: "fees",
-    title: "Fees, invoices and taxes",
+    title: "Fees, credits and taxes",
     content: (
       <>
         <ul>
           <li>
-            Prices are shown in Malaysian ringgit (RM) unless your proposal
+            Package prices are in Canadian dollars (CAD) unless your proposal
             quotes a different currency.
           </li>
           <li>
-            <strong>One-time checks</strong> (Visibility Snapshot and Full
-            Audit) are paid in full before the kickoff call.
+            Packages are billed monthly in advance, at the start of each monthly
+            period. Invoices are due within {legal.invoiceDueDays} days.
           </li>
           <li>
-            <strong>Monthly plans</strong> are billed in advance at the start of
-            each monthly period. Invoices are due within {legal.invoiceDueDays}{" "}
-            days.
+            Each package includes a monthly amount of{" "}
+            <strong>tracking credits</strong>, which cover the AI queries we run
+            to test and track your buyer questions. Unused credits don&apos;t
+            carry over to the next month. If you need more tracking than your
+            credits cover, we&apos;ll check with you first, and we won&apos;t
+            charge for extra usage without your approval.
           </li>
           <li>
             If a payment is late, we may pause work until it&apos;s paid.
             We&apos;ll tell you before we do.
           </li>
           <li>
-            Prices don&apos;t include taxes. Where Malaysian service tax (SST)
-            applies, we&apos;ll add it to the invoice. If you&apos;re outside
-            Malaysia, you&apos;re responsible for any taxes due in your own
-            country. If the law requires you to withhold tax from a payment to
-            us, please tell us before you pay so we can agree how to handle it.
+            Prices don&apos;t include taxes. We&apos;ll add any taxes we&apos;re
+            required to charge to your invoice. You&apos;re responsible for any
+            other taxes due in your own country. If the law requires you to
+            withhold tax from a payment to us, please tell us before you pay so
+            we can agree how to handle it.
           </li>
           <li>You cover your own bank and currency-conversion charges.</li>
         </ul>
         <p>
-          We may change our prices for future periods. For monthly plans
-          we&apos;ll give you at least 30 days&apos; notice, and you can cancel
-          before the new price starts.
+          We may change our prices for future months. We&apos;ll give you at
+          least 30 days&apos; notice, and you can cancel before the new price
+          starts, even during the minimum term.
         </p>
       </>
     ),
   },
   {
     id: "cancellations",
-    title: "Cancellations and refunds",
+    title: "Minimum term, changes and cancelling",
     content: (
       <>
-        <h3>One-time checks</h3>
         <ul>
           <li>
-            Cancel <strong>before the kickoff call</strong>: full refund.
-          </li>
-          <li>
-            Cancel{" "}
-            <strong>after kickoff but before we deliver the report</strong>:{" "}
-            {legal.auditRefundPercent}% refund.
-          </li>
-          <li>
-            Once the report has been delivered, the fee isn&apos;t refundable.
-          </li>
-        </ul>
-        <p>
-          You can also move your kickoff to a later date instead of cancelling.
-        </p>
-
-        <h3>Monthly plans</h3>
-        <ul>
-          <li>
-            Monthly plans have an initial minimum period of{" "}
-            {site.minimumContractMonths} months, because this work takes a few
-            months to show results. After that they continue month to month.
-          </li>
-          <li>
-            To cancel, email us at least {legal.monthlyNoticeDays} days before
-            the end of your current monthly period. Cancelling during the
-            minimum period means the remaining months of that period are still
+            Every package has a minimum term of {site.minimumTermMonths} months,
+            because this work takes a few months to show results. Cancelling
+            during the minimum term means the remaining months are still
             payable.
+          </li>
+          <li>
+            After the minimum term, your package continues month to month. You
+            can stop at any time by emailing us, and it ends at the end of the
+            monthly period you&apos;ve already paid for. Nothing further is
+            billed after that.
+          </li>
+          <li>
+            You can switch between Package A and Package B, or add or remove
+            add-ons. Changes take effect from your next monthly period.
           </li>
           <li>
             We don&apos;t refund part-used months, but we&apos;ll finish the
             work for the month you&apos;ve paid for.
           </li>
-          <li>
-            You can move between Sustain and Grow. The change takes effect from
-            the next monthly period.
-          </li>
         </ul>
-
         <h3>If we cancel</h3>
         <p>
-          If we can&apos;t deliver a service we&apos;ve agreed to, we&apos;ll
+          If we can&apos;t continue a service we&apos;ve agreed to, we&apos;ll
           refund the part of the fee that covers the work we haven&apos;t done.
         </p>
       </>
@@ -533,7 +524,7 @@ const sections: LegalSection[] = [
 export default function TermsPage() {
   return (
     <LegalPage
-      title="Terms and Conditions"
+      title="Terms of Service"
       intro={
         <p>
           The rules for using this website and working with us, written as

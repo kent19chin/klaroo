@@ -3,33 +3,24 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 
-export function Logo({
-  tone = "ink",
-  className,
-}: {
-  tone?: "ink" | "white"
-  className?: string
-}) {
+// TODO: swap the typed wordmark for the wordmark artwork once it's exported
+// (v2 brief: don't retype "klarooo" in the new font).
+export function Logo({ className }: { className?: string }) {
   return (
     <Link
-      href="/"
+      href="/#top"
       aria-label="klarooo home"
-      className={cn("flex items-center gap-3", className)}
+      className={cn("group flex items-center gap-2.5", className)}
     >
       <Image
-        src={tone === "white" ? "/klarooo-logo-white.png" : "/klarooo-logo.png"}
+        src="/klarooo-logo-white.png"
         alt=""
-        width={38}
-        height={37}
-        className="size-9 object-contain"
-        priority={tone === "ink"}
+        width={36}
+        height={35}
+        className="size-8 object-contain transition-transform duration-300 group-hover:-rotate-6"
+        priority
       />
-      <span
-        className={cn(
-          "font-heading text-[26px] font-bold tracking-[-0.5px]",
-          tone === "white" ? "text-white" : "text-ink"
-        )}
-      >
+      <span className="text-[22px] font-extrabold tracking-[-0.03em] text-paper">
         klarooo
       </span>
     </Link>

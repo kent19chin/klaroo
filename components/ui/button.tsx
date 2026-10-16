@@ -17,10 +17,10 @@ const buttonVariantsBase = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
-        // klarooo brand
-        leap: "bg-leap text-ink hover:bg-leap-hover",
-        ink: "bg-ink text-white hover:bg-ink-card",
-        "ink-outline": "border-ink text-ink hover:bg-ink hover:text-white",
+        // klarooo brand (dark theme)
+        leap: "bg-leap text-ink shadow-[0_8px_30px_-8px_rgba(241,119,32,0.55)] hover:bg-leap-hover",
+        "ghost-light": "border-line-strong bg-white/[0.04] text-paper hover:border-paper/30 hover:bg-white/[0.08]",
+        ink: "bg-ink-2 text-paper hover:bg-ink-2/80",
       },
       size: {
         default:
@@ -34,9 +34,9 @@ const buttonVariantsBase = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
-        pill: "h-auto gap-2 rounded-full border-2 px-6 py-3 text-[15px] font-bold",
-        "pill-lg":
-          "h-auto gap-2 rounded-full border-2 px-8 py-4 text-base font-bold sm:text-[17px]",
+        cta: "h-auto gap-2 rounded-xl px-5 py-2.5 text-sm font-bold",
+        "cta-lg":
+          "h-auto gap-2 rounded-xl px-7 py-4 text-base font-bold",
       },
     },
     defaultVariants: {

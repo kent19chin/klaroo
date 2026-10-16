@@ -18,7 +18,7 @@ const summary = [
   "We never sell your personal data or use it for targeted advertising.",
   "Marketing emails only go to people who've agreed, and every one has an unsubscribe link.",
   "You can ask to see, correct or delete your data at any time, free of charge.",
-  "Our checks involve asking AI tools about your business, not about private individuals.",
+  "Our audits involve asking AI tools about your business, not about private individuals.",
   "We follow the privacy laws of Malaysia, Singapore, Canada and the US.",
 ]
 
@@ -50,7 +50,9 @@ const sections: LegalSection[] = [
         <p>This policy applies to personal data about:</p>
         <ul>
           <li>people who visit our website;</li>
-          <li>people who contact us, book a call or ask for a free check;</li>
+          <li>
+            people who contact us, request a free AI audit or book a call;
+          </li>
           <li>our clients and the people we work with at client businesses;</li>
           <li>people who subscribe to our emails; and</li>
           <li>suppliers and partners we work with.</li>
@@ -77,7 +79,9 @@ const sections: LegalSection[] = [
           </li>
           <li>
             <strong>Conversations</strong>: what you tell us by email, WhatsApp,
-            phone or on calls, and details you enter when booking a call.
+            phone or on calls, details you enter in our free-audit form (such as
+            your company, website, competitor and market), and details you enter
+            when booking a call.
           </li>
           <li>
             <strong>Business information</strong>: your website, services,
@@ -454,7 +458,7 @@ const sections: LegalSection[] = [
           {mail}.
         </p>
         <p>
-          You can also read our <Link href="/terms">Terms and Conditions</Link>.
+          You can also read our <Link href="/terms">Terms of Service</Link>.
         </p>
       </>
     ),

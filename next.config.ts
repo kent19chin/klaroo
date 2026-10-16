@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      // v1 had a separate pricing page; v2 is a single page with #packages.
+      { source: "/pricing", destination: "/#packages", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

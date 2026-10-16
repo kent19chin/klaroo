@@ -1,51 +1,63 @@
-// Single source for business details and prices.
+// Single source for business details, prices and legal settings.
 // Values in [brackets] are placeholders that still need real values before launch
-// (see docs/klarooo-website-content.md §5).
+// (see docs/klarooo-website-content-v2.md §5).
 
 export const site = {
   name: "klarooo",
   tagline: "AEO / GEO Consultancy",
   description:
-    "We help businesses get found, and get described correctly, when their customers ask AI for a recommendation.",
+    "klarooo helps businesses rank first on AI search. We fix how ChatGPT, Gemini, Claude and Google AI read your business, and show you the result every month.",
   url: "https://klarooo.com", // TODO: confirm production domain
+  serving: "Serving clients in Canada and Malaysia.",
 
   contact: {
     emailLabel: "[hello@klarooo.com]",
     email: "hello@klarooo.com", // TODO: confirm
-    phoneLabel: "[+60 XX-XXX XXXX]",
-    phoneHref: "tel:+60000000000", // TODO: real number
-    whatsappHref: "https://wa.me/60000000000", // TODO: real WhatsApp number
+    phoneLabel: "[Phone / WhatsApp]",
+    phoneHref: "https://wa.me/60000000000", // TODO: real WhatsApp number
     linkedinLabel: "[LinkedIn]",
     linkedinHref: "#", // TODO: real LinkedIn URL
   },
 
-  prices: {
-    snapshot: "[RM X,XXX]",
-    audit: "[RM X,XXX]",
-    sustain: "[RM X,XXX]",
-    grow: "[RM X,XXX]",
+  // Monthly packages, billed in CAD.
+  packages: {
+    currency: "CAD",
+    a: {
+      name: "Google AI Focus",
+      price: "CA$499", // TODO: confirm
+      credits: "USD 25",
+    },
+    b: {
+      name: "Omni-Model AI",
+      price: "CA$999", // TODO: confirm
+      credits: "USD 100",
+    },
+    personaPrice: "CA$[Price]",
   },
 
-  minimumContractMonths: "[X]",
+  minimumTermMonths: 3,
 
   // Used by /terms and /privacy. Change here and both pages update.
   legal: {
-    lastUpdated: "25 September 2026",
+    lastUpdated: "15 October 2026",
     governingLaw: "Malaysia",
     arbitrationSeat: "Kuala Lumpur",
-    monthlyNoticeDays: 30, // notice to cancel a monthly plan
-    invoiceDueDays: 7, // monthly invoices
-    auditRefundPercent: 50, // refund if a one-time check is cancelled mid-work
+    invoiceDueDays: 7,
   },
 } as const
 
-export const bookingHref = `mailto:${site.contact.email}?subject=${encodeURIComponent(
-  "Free AI visibility check"
-)}` // TODO: swap for a Calendly/booking link if you have one
-
 export const navLinks = [
-  { label: "Why it matters", href: "/#why" },
-  { label: "What we do", href: "/#what" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Questions", href: "/#faq" },
+  { label: "Why AI Search", href: "/#why-ai" },
+  { label: "Who We Are", href: "/#who-we-are" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Packages", href: "/#packages" },
+  { label: "FAQ", href: "/#faq" },
+] as const
+
+export const auditMarkets = [
+  "Canada",
+  "Malaysia",
+  "Singapore",
+  "United States",
+  "Other",
 ] as const
