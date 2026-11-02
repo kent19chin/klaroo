@@ -5,21 +5,21 @@ import { Reveal } from "@/components/site/motion"
 
 // Examples of the questions people type into AI assistants before they buy.
 const rowOne = [
-  "Best dental clinic in Petaling Jaya?",
-  "Which accounting firm is good for SMEs in KL?",
-  "Reliable aircon servicing near Subang Jaya?",
-  "Top interior designers in Johor Bahru?",
-  "Who does corporate catering in Penang?",
-  "Best physiotherapy clinic in Bangsar?",
+  "Best dental clinic in Toronto?",
+  "Which accounting firm is good for SMEs in Ontario?",
+  "Reliable HVAC servicing near Mississauga?",
+  "Top interior designers in Vancouver?",
+  "Who does corporate catering in Calgary?",
+  "Best physiotherapy clinic in Ottawa?",
 ]
 
 const rowTwo = [
-  "Which law firm handles property deals in Cyberjaya?",
-  "Good wedding photographers in Melaka?",
-  "Most trusted car workshop in Shah Alam?",
-  "Recommend a digital agency in Kuala Lumpur",
-  "Affordable preschool near Cheras?",
-  "Best roofing contractor in Klang Valley?",
+  "Which law firm handles property deals in Toronto?",
+  "Good wedding photographers in Montreal?",
+  "Most trusted auto shop in Hamilton?",
+  "Recommend a digital agency in Canada",
+  "Affordable preschool near North York?",
+  "Best roofing contractor in the GTA?",
 ]
 
 function Bubble({ text, tone }: { text: string; tone: "light" | "blue" }) {
