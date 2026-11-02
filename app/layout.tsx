@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 import { MotionProvider } from "@/components/site/motion";
-import { site } from "@/lib/site";
+import { JsonLd } from "@/components/site/section";
+import { organizationJsonLd, site } from "@/lib/site";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -26,18 +27,22 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: site.name,
     type: "website",
-    locale: "en_MY",
+    locale: "en_CA",
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="en-CA"
       className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <MotionProvider>{children}</MotionProvider>
+        <JsonLd data={organizationJsonLd()} />
       </body>
     </html>
   );

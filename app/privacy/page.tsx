@@ -7,7 +7,7 @@ import { site } from "@/lib/site"
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How klarooo collects, uses and protects personal data for clients and visitors in Malaysia, Singapore, Canada and the United States.",
+    "How klarooo collects, uses and protects personal data for clients and visitors in Canada and elsewhere.",
 }
 
 const email = site.contact.email
@@ -19,7 +19,7 @@ const summary = [
   "Marketing emails only go to people who've agreed, and every one has an unsubscribe link.",
   "You can ask to see, correct or delete your data at any time, free of charge.",
   "Our checks involve asking AI tools about your business, not about private individuals.",
-  "We follow the privacy laws of Malaysia, Singapore, Canada and the US.",
+  "We follow Canadian privacy law and the privacy laws that apply to you wherever you are.",
 ]
 
 const sections: LegalSection[] = [
@@ -31,8 +31,9 @@ const sections: LegalSection[] = [
         <p>
           {site.name} (<strong>&ldquo;we&rdquo;</strong>,{" "}
           <strong>&ldquo;us&rdquo;</strong>) is an AEO / GEO consultancy based
-          in Malaysia. We help businesses get found, and described correctly,
-          when their customers ask AI tools for recommendations.
+          in {site.location.label}. We help Canadian businesses get found, and
+          described correctly, when their customers ask AI tools for
+          recommendations.
         </p>
         <p>
           We are responsible for the personal data described in this policy. Our{" "}
@@ -284,10 +285,10 @@ const sections: LegalSection[] = [
     content: (
       <>
         <p>
-          We&apos;re based in Malaysia, and some of our service providers store
-          data in other countries, including Singapore, the United States and
-          countries in the European Union. That means your data may be processed
-          outside the country where you live.
+          We&apos;re based in {site.location.label}, and some of our service
+          providers store data in other countries, including the United States
+          and countries in the European Union. That means your data may be
+          processed outside the country where you live.
         </p>
         <p>
           When we transfer personal data abroad, we take reasonable steps to
@@ -376,7 +377,7 @@ const sections: LegalSection[] = [
         <p>
           To make a request, email {mail}. We may need to confirm your identity
           first. We don&apos;t charge for requests, and we&apos;ll reply within
-          21 days for Malaysian requests and within 30 days otherwise. If we
+          30 days. If we
           need longer, we&apos;ll tell you why. If we can&apos;t do what you
           ask, for example because the law requires us to keep certain records,
           we&apos;ll explain the reason.
@@ -395,18 +396,18 @@ const sections: LegalSection[] = [
     content: (
       <>
         <p>
-          We serve clients mainly in Malaysia, Singapore, Canada and the United
-          States, and we follow the privacy laws that apply to you in each of
-          them. The rights and commitments in this policy apply to everyone,
-          wherever you are, and we won&apos;t treat you differently for using
-          them.
+          We serve clients mainly in Canada, and we follow Canadian privacy law
+          (including PIPEDA) plus the privacy laws that apply to you wherever
+          you are. The rights and commitments in this policy apply to everyone,
+          and we won&apos;t treat you differently for using them.
         </p>
         <p>
           If you&apos;re not happy with how we&apos;ve handled your personal
           data, please talk to us first. You also have the right to complain to
-          the data protection authority where you live.
+          the Office of the Privacy Commissioner of Canada, or the data
+          protection authority where you live.
         </p>
-        <p>A Bahasa Malaysia version of this policy is available on request.</p>
+        <p>This policy is written in English.</p>
       </>
     ),
   },

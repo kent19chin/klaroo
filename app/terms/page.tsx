@@ -64,8 +64,7 @@ const sections: LegalSection[] = [
         <p>
           Some countries give customers rights that can&apos;t be removed by a
           contract. Nothing in these terms takes away any right you have under
-          law that can&apos;t legally be excluded, in Malaysia, Singapore,
-          Canada, the United States or anywhere else.
+          law that can&apos;t legally be excluded, in Canada or anywhere else.
         </p>
       </>
     ),
@@ -182,7 +181,7 @@ const sections: LegalSection[] = [
       <>
         <ul>
           <li>
-            Prices are shown in Malaysian ringgit (RM) unless your proposal
+            Prices are shown in Canadian dollars (CAD) unless your proposal
             quotes a different currency.
           </li>
           <li>
@@ -199,11 +198,11 @@ const sections: LegalSection[] = [
             We&apos;ll tell you before we do.
           </li>
           <li>
-            Prices don&apos;t include taxes. Where Malaysian service tax (SST)
-            applies, we&apos;ll add it to the invoice. If you&apos;re outside
-            Malaysia, you&apos;re responsible for any taxes due in your own
-            country. If the law requires you to withhold tax from a payment to
-            us, please tell us before you pay so we can agree how to handle it.
+            Prices don&apos;t include taxes. Where GST/HST applies, we&apos;ll
+            add it to the invoice. If you&apos;re outside Canada, you&apos;re
+            responsible for any taxes due in your own country. If the law
+            requires you to withhold tax from a payment to us, please tell us
+            before you pay so we can agree how to handle it.
           </li>
           <li>You cover your own bank and currency-conversion charges.</li>
         </ul>
@@ -452,12 +451,10 @@ const sections: LegalSection[] = [
           good faith to resolve it within 30 days.
         </p>
         <p>
-          If we can&apos;t, the dispute will be settled by arbitration
-          administered by the Asian International Arbitration Centre (AIAC)
-          under its arbitration rules. There will be one arbitrator, the seat
-          will be {legal.arbitrationSeat}, and the arbitration will be in
-          English. The decision can be enforced in Singapore, Canada, the United
-          States and the many other countries that recognise international
+          If we can&apos;t, the dispute will be settled by arbitration. There
+          will be one arbitrator, the seat will be {legal.arbitrationSeat}, and
+          the arbitration will be in English. The decision can be enforced in
+          Canada and the many other countries that recognise international
           arbitration awards.
         </p>
         <p>

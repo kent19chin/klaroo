@@ -38,7 +38,7 @@ import {
 } from "@/components/site/section"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
-import { bookingHref, site } from "@/lib/site"
+import { bookingHref, facts, site } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 const shifts: { icon: LucideIcon; title: string; body: string }[] = [
@@ -133,8 +133,16 @@ const timeline = [
 
 const faqs = [
   {
+    q: "Do you work with businesses in Canada?",
+    a: "Yes. Klarooo is based in Toronto and we work with businesses across Canada. The questions we ask AI are the ones your customers in your city actually type — Toronto, Calgary, Vancouver, or wherever you sell.",
+  },
+  {
+    q: "Which AI tools do you actually check?",
+    a: "ChatGPT, Gemini, and Google's AI answers. We ask the same questions several times on each, because a single answer isn't a reliable picture.",
+  },
+  {
     q: "Is this just SEO with a new name?",
-    a: "No, but they're related. SEO is about where you sit on a page of links. This is about whether you get named at all when an AI gives someone a single answer. Some of the work overlaps. A lot of it doesn't.",
+    a: "No, but they're related. SEO is about where you sit on a page of links. This is about whether you get named at all when an AI gives someone a single answer. Some of the work overlaps. A lot of it doesn't. People search for that work as AEO or GEO; the job is the same: get named, and get described correctly.",
   },
   {
     q: "Do I need to stop my current SEO work?",
@@ -153,21 +161,6 @@ const faqs = [
     a: "Then we'll tell you that, and you won't need a monthly plan. We'd rather you came back in six months than pay us for work you don't need.",
   },
 ] as const
-
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: site.name,
-  description: site.description,
-  url: site.url,
-  logo: `${site.url}/klarooo-logo.png`,
-  areaServed: "MY",
-  knowsAbout: [
-    "Answer engine optimization",
-    "Generative engine optimization",
-    "AI search visibility",
-  ],
-}
 
 export default function Home() {
   return (
@@ -189,7 +182,7 @@ export default function Home() {
                     shimmerWidth={120}
                     className="mx-0 max-w-none text-[13px] font-bold tracking-[0.4px] text-ink/80 via-white"
                   >
-                    AEO / GEO CONSULTANCY
+                    TORONTO · AEO / GEO CONSULTANCY
                   </AnimatedShinyText>
                 </span>
               </FadeUp>
@@ -200,10 +193,11 @@ export default function Home() {
               />
               <FadeUp delay={0.45}>
                 <p className="text-[17px] leading-[1.62] text-slate md:text-[19px]">
-                  People now ask ChatGPT, Gemini and Google&apos;s AI for
-                  recommendations before they visit a single website. We find
-                  out what those answers say about your business — then make
-                  sure you&apos;re in them, and that what they say is right.
+                  People in Canada now ask ChatGPT, Gemini and Google&apos;s AI
+                  for recommendations before they visit a single website. Klarooo
+                  is a Toronto consultancy that finds out what those answers say
+                  about your business — then makes sure you&apos;re in them, and
+                  that what they say is right.
                 </p>
               </FadeUp>
               <FadeUp
@@ -254,6 +248,20 @@ export default function Home() {
         </section>
 
         <QuestionsMarquee />
+
+        {/* Extractable facts — short declarative sentences models can quote */}
+        <section aria-label="About klarooo" className="bg-white">
+          <div className="mx-auto grid max-w-[1440px] gap-8 px-5 py-12 md:grid-cols-3 md:px-10 lg:gap-11 lg:px-20 lg:py-16">
+            {facts.map((fact) => (
+              <article key={fact.label} className="flex flex-col gap-2">
+                <Eyebrow>{fact.label}</Eyebrow>
+                <p className="text-[17px] leading-[1.55] font-semibold text-ink">
+                  {fact.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
 
         {/* Shift band */}
         <section aria-label="How search has changed" className="bg-blue-tint">
@@ -587,7 +595,6 @@ export default function Home() {
       </main>
       <SiteFooter />
 
-      <JsonLd data={organizationJsonLd} />
       <JsonLd data={faqJsonLd(faqs)} />
     </>
   )

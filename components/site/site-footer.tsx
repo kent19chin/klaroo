@@ -48,6 +48,9 @@ export function SiteFooter({
               <p className="text-[15.5px] leading-[1.62] text-mist">
                 {site.description}
               </p>
+              <p className="text-[13px] font-bold tracking-[0.8px] text-fog uppercase">
+                {site.location.label}
+              </p>
             </div>
             <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:gap-[72px]">
               {columns.map((col) => (
