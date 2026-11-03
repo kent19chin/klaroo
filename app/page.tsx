@@ -18,6 +18,7 @@ import { AiAnswerMock } from "@/components/site/ai-answer-mock"
 import { CtaBand } from "@/components/site/cta-band"
 import { EngineIcons } from "@/components/site/engine-icons"
 import { FaqList } from "@/components/site/faq-list"
+import { FreeCheckForm } from "@/components/site/free-check-form"
 import { HeroBackdrop } from "@/components/site/hero-backdrop"
 import { HoverCard } from "@/components/site/hover-card"
 import {
@@ -536,17 +537,13 @@ export default function Home() {
         <CtaBand
           id="start"
           title="Find out what AI says about you"
-          body="It takes one short call to get started, and you'll know more about your AI visibility than most of your competitors know about theirs."
-          primary={{
-            label: "Book your free check",
-            href: bookingHref,
-            external: true,
-          }}
-          secondary={{
-            label: "Or message us on WhatsApp",
-            href: site.contact.whatsappHref,
-            external: true,
-          }}
+          body="Tell us about your firm and we'll check how it shows up when customers ask AI, then send you your score. You'll know more about your AI visibility than most of your competitors know about theirs."
+          aside={
+            <FreeCheckForm
+              bookingHref={bookingHref}
+              whatsappHref={site.contact.whatsappHref}
+            />
+          }
         />
       </main>
       <SiteFooter />

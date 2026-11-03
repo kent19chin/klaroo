@@ -20,6 +20,9 @@ klarooo is an AEO / GEO consultancy site: `/` (Home), `/pricing`, `/privacy` and
 - **Brand tokens** are Tailwind colours defined in `app/globals.css` (`ink`, `paper`, `clarity`, `leap`, `blue-tint`, `orange-tint`, `slate`, `caption`, `kicker`, …). Use them instead of hex values. Fonts: `font-heading` (Space Grotesk) for headings, default `font-sans` (Manrope).
 - **Look:** flat colour fields, no gradients or drop shadows, 1px `border-line` on light cards, pill (rounded-full) buttons and badges, 14–22px card radius.
 - **Buttons:** `Button` / `buttonVariants` have brand variants `leap` (orange, ink text), `ink`, `ink-outline` and sizes `pill` / `pill-lg`. For links use `<Link className={buttonVariants({ variant: "leap", size: "pill-lg" })}>`.
+- **Free check form:** `FreeCheckForm` on the home page saves name, email, website and optional competitors to Postgres through `app/actions/leads.ts`.
+- **Admin** lives at `/admin`: email magic-link sign-in limited to the `ADMIN_EMAILS` list in `lib/auth.ts`, collected emails, and a Tiptap blog editor. Call `requireAdmin()` at the top of every admin page and server action; route handlers check `getAdmin()`. Setup steps and env vars are in `.env.example`; the schema is `db/schema.sql` (`npm run db:migrate`).
+- **Blog:** `/blog` and `/blog/[slug]` read published posts from Postgres (`lib/posts.ts`). Post HTML goes through `cleanPostHtml` on save. The body is styled by `.post-body` in `app/globals.css`.
 - **Site sections** (header, footer, CTA band, FAQ accordion, plan chooser, section helpers, hero AI-answer demo) live in `components/site/`. FAQ answers stay in the DOM when collapsed and emit FAQPage JSON-LD via `faqJsonLd()` — keep that for any new Q&A content.
 - **Motion:**
   - Below the fold, use `Reveal` / `Stagger` / `StaggerItem` from `components/site/motion.tsx`.
@@ -49,6 +52,10 @@ npx shadcn@latest add "https://ui.aceternity.com/registry/<name>.json"   # Acete
 - `separator.tsx` — `Separator`
 - `badge.tsx` — `Badge`, `badgeVariants`
 - `avatar.tsx` — `Avatar`, `AvatarImage`, `AvatarFallback`, `AvatarGroup`, `AvatarGroupCount`, `AvatarBadge`
+- `input.tsx` — `Input`
+- `label.tsx` — `Label`
+- `textarea.tsx` — `Textarea`
+- `table.tsx` — `Table`, `TableHeader`, `TableBody`, `TableFooter`, `TableHead`, `TableRow`, `TableCell`, `TableCaption`
 
 **Magic UI**
 - `text-reveal.tsx` — `TextReveal` (scroll-driven text reveal)

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
@@ -14,12 +15,15 @@ export function CtaBand({
   body,
   primary,
   secondary,
+  aside,
 }: {
   id: string
   title: string
   body: string
-  primary: CtaLink
+  primary?: CtaLink
   secondary?: CtaLink
+  /** Replaces the buttons, for example with a form. */
+  aside?: ReactNode
 }) {
   const linkProps = (l: CtaLink) =>
     l.external ? { target: "_blank", rel: "noopener noreferrer" } : {}
@@ -55,22 +59,29 @@ export function CtaBand({
         </Reveal>
         <Reveal
           delay={0.15}
-          className="flex flex-col gap-3 sm:flex-row lg:flex-col"
+          className={cn(
+            aside
+              ? "relative w-full lg:max-w-[500px]"
+              : "flex flex-col gap-3 sm:flex-row lg:flex-col"
+          )}
         >
-          <Link
-            href={primary.href}
-            {...linkProps(primary)}
-            className={cn(
-              buttonVariants({ variant: "ink", size: "pill-lg" }),
-              "px-10 hover:scale-[1.03]"
-            )}
-          >
-            {primary.label}
-            <ArrowRight
-              aria-hidden
-              className="transition-transform group-hover/button:translate-x-1"
-            />
-          </Link>
+          {aside}
+          {primary && (
+            <Link
+              href={primary.href}
+              {...linkProps(primary)}
+              className={cn(
+                buttonVariants({ variant: "ink", size: "pill-lg" }),
+                "px-10 hover:scale-[1.03]"
+              )}
+            >
+              {primary.label}
+              <ArrowRight
+                aria-hidden
+                className="transition-transform group-hover/button:translate-x-1"
+              />
+            </Link>
+          )}
           {secondary && (
             <Link
               href={secondary.href}

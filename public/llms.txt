@@ -8,6 +8,7 @@ Klarooo does not guarantee a place in an AI answer. We check what those systems 
 
 - [Home](https://klarooo.com/): What happens when a customer asks AI and your name is missing, and how klarooo checks and fixes that.
 - [Pricing](https://klarooo.com/pricing): Two monthly plans: AI Engine Focus Plan ($849/month, report and recommendations only) and Comprehensive AI Improvement ($1599/month, adds Google AI Overview tracking and implementation).
+- [Blog](https://klarooo.com/blog): Plain-language notes on how AI tools choose which businesses to name.
 - [Privacy](https://klarooo.com/privacy)
 - [Terms](https://klarooo.com/terms)
 

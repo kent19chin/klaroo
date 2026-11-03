@@ -20,6 +20,7 @@ const columns = [
     links: [
       { label: "Why it matters", href: "/#why" },
       { label: "What we do", href: "/#what" },
+      { label: "Blog", href: "/blog" },
       { label: "Questions", href: "/#faq" },
     ],
   },
@@ -79,6 +80,9 @@ export function SiteFooter({
               </Link>
               <Link href="/pricing" className={linkClass}>
                 Pricing
+              </Link>
+              <Link href="/blog" className={linkClass}>
+                Blog
               </Link>
               <Link href="/pricing#questions" className={linkClass}>
                 Questions
