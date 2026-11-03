@@ -15,7 +15,8 @@
 klarooo is an AEO / GEO consultancy site: `/` (Home), `/pricing`, `/privacy` and `/terms`. The source brief is `docs/klarooo-website-content.md` (copy is final; `[bracketed]` values are placeholders).
 
 - **Copy rule:** describe the customer's situation, not the technical service ("does your name come up?", not "schema markup" / "SEO optimization"). Headings name the problem; body explains the mechanism.
-- **Business details, prices, placeholders and legal settings** (refund %, notice period, governing law, last-updated date) live in `lib/site.ts` — change them there, never inline in pages. Legal pages use `LegalPage` from `components/site/legal-page.tsx`; update `legal.lastUpdated` whenever their text changes.
+- **Pricing is two monthly plans** (`plans` in `lib/site.ts`): AI Engine Focus (report only) and Comprehensive AI Improvement (adds Google AI and implementation). Keep the pricing page, home preview, footer, Terms and `public/llms.txt` in step with them.
+- **Business details, plans, placeholders and legal settings** (notice period, governing law, last-updated date) live in `lib/site.ts` — change them there, never inline in pages. Legal pages use `LegalPage` from `components/site/legal-page.tsx`; update `legal.lastUpdated` whenever their text changes.
 - **Brand tokens** are Tailwind colours defined in `app/globals.css` (`ink`, `paper`, `clarity`, `leap`, `blue-tint`, `orange-tint`, `slate`, `caption`, `kicker`, …). Use them instead of hex values. Fonts: `font-heading` (Space Grotesk) for headings, default `font-sans` (Manrope).
 - **Look:** flat colour fields, no gradients or drop shadows, 1px `border-line` on light cards, pill (rounded-full) buttons and badges, 14–22px card radius.
 - **Buttons:** `Button` / `buttonVariants` have brand variants `leap` (orange, ink text), `ink`, `ink-outline` and sizes `pill` / `pill-lg`. For links use `<Link className={buttonVariants({ variant: "leap", size: "pill-lg" })}>`.

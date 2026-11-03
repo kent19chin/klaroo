@@ -1,13 +1,13 @@
 # klarooo
 
-> Klarooo is an AEO / GEO consultancy based in Toronto, Canada. We measure whether a business is named in ChatGPT, Gemini, and Google AI answers, then work to improve that visibility and correct what those answers get wrong.
+> Klarooo is an AEO / GEO consultancy based in Toronto, Canada. We measure whether a business is named in ChatGPT, Gemini, Claude, and Google AI answers, then work to improve that visibility and correct what those answers get wrong.
 
 Klarooo does not guarantee a place in an AI answer. We check what those systems say, fix what is wrong at the source, and get Canadian businesses listed on the directories, review sites, and industry pages those systems actually cite.
 
 ## Site
 
 - [Home](https://klarooo.com/): What happens when a customer asks AI and your name is missing, and how klarooo checks and fixes that.
-- [Pricing](https://klarooo.com/pricing): One-time Visibility Snapshot or Full Audit, then optional monthly Sustain or Grow plans.
+- [Pricing](https://klarooo.com/pricing): Two monthly plans: AI Engine Focus Plan ($849/month, report and recommendations only) and Comprehensive AI Improvement ($1599/month, adds Google AI Overview tracking and implementation).
 - [Privacy](https://klarooo.com/privacy)
 - [Terms](https://klarooo.com/terms)
 
@@ -18,7 +18,7 @@ Klarooo does not guarantee a place in an AI answer. We check what those systems 
 - Category: Answer engine optimization (AEO) and generative engine optimization (GEO) for AI search visibility
 - Location: Toronto, Ontario, Canada
 - Audience: Canadian business owners and marketers
-- AI surfaces checked: ChatGPT, Gemini, Google AI answers
+- AI surfaces checked: ChatGPT, Gemini, Claude, Google AI answers
 - Contact: hello@klarooo.com
 
 ## Optional

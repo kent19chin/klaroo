@@ -28,15 +28,6 @@ export const site = {
     linkedinHref: "#", // TODO: real LinkedIn URL
   },
 
-  prices: {
-    snapshot: "[C$ X,XXX]",
-    audit: "[C$ X,XXX]",
-    sustain: "[C$ X,XXX]",
-    grow: "[C$ X,XXX]",
-  },
-
-  minimumContractMonths: "[X]",
-
   // Used by /terms and /privacy. Change here and both pages update.
   legal: {
     lastUpdated: "2 November 2026",
@@ -44,7 +35,6 @@ export const site = {
     arbitrationSeat: "Toronto, Ontario",
     monthlyNoticeDays: 30, // notice to cancel a monthly plan
     invoiceDueDays: 7, // monthly invoices
-    auditRefundPercent: 50, // refund if a one-time check is cancelled mid-work
   },
 } as const
 
@@ -55,7 +45,7 @@ export const facts = [
   },
   {
     label: "What we do",
-    text: "We measure whether a business is named in ChatGPT, Gemini and Google AI answers, then work to improve that visibility and correct what those answers get wrong.",
+    text: "We measure whether a business is named in ChatGPT, Gemini, Claude and Google AI answers, then work to improve that visibility and correct what those answers get wrong.",
   },
   {
     label: "Who it's for",
@@ -63,9 +53,65 @@ export const facts = [
   },
 ] as const
 
-export const bookingHref = `mailto:${site.contact.email}?subject=${encodeURIComponent(
-  "Free AI visibility check"
-)}` // TODO: swap for a Calendly/booking link if you have one
+export type Engine = "claude" | "chatgpt" | "gemini" | "google"
+
+export type PlanItem = { text: string; excluded?: boolean }
+
+/** The two monthly plans. Pricing, home, footer and terms all read from here. */
+export const plans = {
+  focus: {
+    name: "AI Engine Focus Plan",
+    badge: "Essential",
+    subhead: "Detailed report on AI share of voice",
+    price: "$849",
+    period: "/ month",
+    engines: ["claude", "chatgpt", "gemini"],
+    includes: [
+      { text: "Competition Research" },
+      { text: "Citation mapping in ChatGPT, Gemini & Claude" },
+      { text: "25 Prompts, Repeated 3 Times Across 3 Engines" },
+      { text: "Monthly performance report" },
+      { text: "Recommendations" },
+      { text: "Implementation and Fixing", excluded: true },
+    ],
+    cta: "Start with AI Engine Focus",
+    fit: "Best if your own team will action the recommendations.",
+  },
+  comprehensive: {
+    name: "Comprehensive AI Improvement",
+    badge: "Recommended",
+    subhead: "Optimisation across Google and leading AI models.",
+    price: "$1599",
+    period: "/ month",
+    engines: ["claude", "chatgpt", "gemini", "google"],
+    includes: [
+      { text: "Google AI Overview tracking" },
+      { text: "Citation mapping in ChatGPT, Gemini & Claude" },
+      { text: "Correction of wrong or made-up facts" },
+      { text: "Top 5 priority pages restructured" },
+      { text: "Monthly performance report" },
+      { text: "50 Prompts, Repeated 3 Times Across 3 Engines" },
+    ],
+    cta: "Start with Comprehensive",
+    fit: "Best if you want us to make the fixes for you.",
+  },
+} as const satisfies Record<
+  string,
+  {
+    name: string
+    badge: string
+    subhead: string
+    price: string
+    period: string
+    engines: readonly Engine[]
+    includes: readonly PlanItem[]
+    cta: string
+    fit: string
+  }
+>
+
+export const bookingHref =
+  "https://calendly.com/kentchin/klarooo-discovery-call"
 
 export const navLinks = [
   { label: "Why it matters", href: "/#why" },
@@ -117,6 +163,7 @@ export function organizationJsonLd() {
       "Generative engine optimization",
       "AI search visibility",
       "ChatGPT",
+      "Claude",
       "Google Gemini",
       "Google AI Overviews",
     ],

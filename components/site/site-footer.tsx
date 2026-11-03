@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { Separator } from "@/components/ui/separator"
 import { Logo } from "@/components/site/logo"
-import { site } from "@/lib/site"
+import { plans, site } from "@/lib/site"
 
 const linkClass = "text-[15px] text-mist transition-colors hover:text-white"
 
@@ -10,9 +10,9 @@ const columns = [
   {
     title: "Services",
     links: [
-      { label: "Visibility Snapshot", href: "/pricing#one-time" },
-      { label: "Full Audit", href: "/pricing#one-time" },
-      { label: "Monthly plans", href: "/pricing#monthly" },
+      { label: plans.focus.name, href: "/pricing#plans" },
+      { label: plans.comprehensive.name, href: "/pricing#plans" },
+      { label: "Pricing questions", href: "/pricing#questions" },
     ],
   },
   {

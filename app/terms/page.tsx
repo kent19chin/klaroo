@@ -2,12 +2,12 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 import { LegalPage, type LegalSection } from "@/components/site/legal-page"
-import { site } from "@/lib/site"
+import { plans, site } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Terms and Conditions",
   description:
-    "The terms that apply when you use the klarooo website or buy a visibility check or monthly plan from us.",
+    "The terms that apply when you use the klarooo website or buy a monthly plan from us.",
 }
 
 const { legal } = site
@@ -16,8 +16,8 @@ const email = site.contact.email
 const summary = [
   "Our services are for businesses, not personal or household use.",
   "Nobody can guarantee a spot in an AI answer, and we don't either.",
-  "One-time checks are paid upfront. Cancel before kickoff for a full refund.",
-  `Monthly plans run for an initial ${site.minimumContractMonths}-month period, then month to month with ${legal.monthlyNoticeDays} days' notice.`,
+  "Plans are billed monthly, in advance.",
+  `Plans run month to month with no minimum term. You can cancel with ${legal.monthlyNoticeDays} days' notice.`,
   "Once you've paid, the reports and content we make for you are yours.",
   `These terms are governed by the laws of ${legal.governingLaw}.`,
 ]
@@ -81,13 +81,15 @@ const sections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            <strong>Visibility Snapshot</strong> and <strong>Full Audit</strong>
-            : one-time checks of how AI assistants describe and recommend your
-            business, with a written report.
+            <strong>{plans.focus.name}</strong>: a monthly report on how AI
+            assistants describe and recommend your business, with competition
+            research and recommendations. Your team carries out any changes;
+            implementation and fixing aren&apos;t included.
           </li>
           <li>
-            <strong>Sustain</strong> and <strong>Grow</strong>: monthly plans
-            where we keep checking those answers and do work to improve them.
+            <strong>{plans.comprehensive.name}</strong>: monthly tracking across
+            AI assistants and Google&apos;s AI answers, plus work we carry out
+            to improve those answers, as described on our pricing page.
           </li>
         </ul>
         <p>
@@ -185,13 +187,8 @@ const sections: LegalSection[] = [
             quotes a different currency.
           </li>
           <li>
-            <strong>One-time checks</strong> (Visibility Snapshot and Full
-            Audit) are paid in full before the kickoff call.
-          </li>
-          <li>
-            <strong>Monthly plans</strong> are billed in advance at the start of
-            each monthly period. Invoices are due within {legal.invoiceDueDays}{" "}
-            days.
+            Plans are billed in advance at the start of each monthly period.
+            Invoices are due within {legal.invoiceDueDays} days.
           </li>
           <li>
             If a payment is late, we may pause work until it&apos;s paid.
@@ -207,9 +204,9 @@ const sections: LegalSection[] = [
           <li>You cover your own bank and currency-conversion charges.</li>
         </ul>
         <p>
-          We may change our prices for future periods. For monthly plans
-          we&apos;ll give you at least 30 days&apos; notice, and you can cancel
-          before the new price starts.
+          We may change our prices for future periods. We&apos;ll give you at
+          least 30 days&apos; notice, and you can cancel before the new price
+          starts.
         </p>
       </>
     ),
@@ -219,44 +216,23 @@ const sections: LegalSection[] = [
     title: "Cancellations and refunds",
     content: (
       <>
-        <h3>One-time checks</h3>
         <ul>
           <li>
-            Cancel <strong>before the kickoff call</strong>: full refund.
-          </li>
-          <li>
-            Cancel{" "}
-            <strong>after kickoff but before we deliver the report</strong>:{" "}
-            {legal.auditRefundPercent}% refund.
-          </li>
-          <li>
-            Once the report has been delivered, the fee isn&apos;t refundable.
-          </li>
-        </ul>
-        <p>
-          You can also move your kickoff to a later date instead of cancelling.
-        </p>
-
-        <h3>Monthly plans</h3>
-        <ul>
-          <li>
-            Monthly plans have an initial minimum period of{" "}
-            {site.minimumContractMonths} months, because this work takes a few
-            months to show results. After that they continue month to month.
+            Plans run month to month and have no minimum term. We generally
+            recommend staying for 3 months, because this work takes time to show
+            real changes and improvements, but that&apos;s up to you.
           </li>
           <li>
             To cancel, email us at least {legal.monthlyNoticeDays} days before
-            the end of your current monthly period. Cancelling during the
-            minimum period means the remaining months of that period are still
-            payable.
+            the end of your current monthly period.
           </li>
           <li>
             We don&apos;t refund part-used months, but we&apos;ll finish the
             work for the month you&apos;ve paid for.
           </li>
           <li>
-            You can move between Sustain and Grow. The change takes effect from
-            the next monthly period.
+            You can move between the two plans. The change takes effect from the
+            next monthly period.
           </li>
         </ul>
 

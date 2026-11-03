@@ -16,6 +16,7 @@ import { CardSpotlight } from "@/components/ui/card-spotlight"
 import { TextReveal } from "@/components/ui/text-reveal"
 import { AiAnswerMock } from "@/components/site/ai-answer-mock"
 import { CtaBand } from "@/components/site/cta-band"
+import { EngineIcons } from "@/components/site/engine-icons"
 import { FaqList } from "@/components/site/faq-list"
 import { HeroBackdrop } from "@/components/site/hero-backdrop"
 import { HoverCard } from "@/components/site/hover-card"
@@ -38,7 +39,7 @@ import {
 } from "@/components/site/section"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
-import { bookingHref, facts, site } from "@/lib/site"
+import { bookingHref, facts, plans, site } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 const shifts: { icon: LucideIcon; title: string; body: string }[] = [
@@ -89,7 +90,7 @@ const steps = [
   {
     title: "We find out where you stand",
     note: "The honest starting point.",
-    body: "We ask AI the same questions your customers actually ask — across ChatGPT, Gemini and Google's AI answers. We ask each one several times, because the answers change. Then we show you how often you get named, how often your competitors do, and exactly which questions you're missing from.",
+    body: "We ask AI the same questions your customers actually ask — across ChatGPT, Gemini, Claude and Google's AI answers. We ask each one several times, because the answers change. Then we show you how often you get named, how often your competitors do, and exactly which questions you're missing from.",
   },
   {
     title: "We fix what AI gets wrong",
@@ -127,7 +128,7 @@ const timeline = [
   {
     when: "Week 4 onwards",
     title: "We get to work",
-    body: "We make the fixes and keep checking every month, so you can see the answers change.",
+    body: "We keep checking every month, so you can see the answers change. On Comprehensive AI Improvement, we make the fixes too.",
   },
 ]
 
@@ -138,7 +139,7 @@ const faqs = [
   },
   {
     q: "Which AI tools do you actually check?",
-    a: "ChatGPT, Gemini, and Google's AI answers. We ask the same questions several times on each, because a single answer isn't a reliable picture.",
+    a: "ChatGPT, Gemini and Claude on both plans, plus Google's AI answers on Comprehensive AI Improvement. We ask the same questions several times on each, because a single answer isn't a reliable picture.",
   },
   {
     q: "Is this just SEO with a new name?",
@@ -485,11 +486,11 @@ export default function Home() {
           <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionIntro
               eyebrow="Pricing"
-              title="Start with a check. Continue only if it's worth it."
+              title="Two plans. The difference is who does the fixing."
               className="max-w-[720px]"
             >
-              You pay once to find out where you stand. The monthly plan is how
-              you improve it — and it&apos;s your call whether to start one.
+              Both show you, every month, what AI says about you. One leaves the
+              changes to your team. The other has us make them.
             </SectionIntro>
             <Link
               href="/pricing"
@@ -505,59 +506,10 @@ export default function Home() {
 
           <div className="mt-10 grid gap-5 lg:mt-11 lg:grid-cols-2 lg:gap-[26px]">
             <Reveal>
-              <HoverCard className="flex h-full flex-col gap-4 rounded-[20px] bg-paper p-7 lg:p-9">
-                <Eyebrow className="tracking-[1.2px]">
-                  Step one — pay once
-                </Eyebrow>
-                <h3 className="font-heading text-[26px] font-bold text-ink lg:text-[28px]">
-                  Find out where you stand
-                </h3>
-                <p className="text-base leading-[1.62] text-slate">
-                  A one-time check that tells you how visible you are today,
-                  what AI is getting wrong about you, and what to fix first. Two
-                  depths, depending on how much detail you want.
-                </p>
-                <div className="mt-auto grid gap-3 pt-1 sm:grid-cols-2">
-                  <PriceTile
-                    name="Visibility Snapshot"
-                    price={site.prices.snapshot}
-                  />
-                  <PriceTile name="Full Audit" price={site.prices.audit} />
-                </div>
-              </HoverCard>
+              <PlanPreview plan={plans.focus} />
             </Reveal>
-
             <Reveal delay={0.1}>
-              <HoverCard
-                glow="rgba(241, 119, 32, 0.16)"
-                className="flex h-full flex-col gap-4 rounded-[20px] bg-ink p-7 lg:p-9"
-              >
-                <Eyebrow className="tracking-[1.2px] text-leap">
-                  Step two — monthly, optional
-                </Eyebrow>
-                <h3 className="font-heading text-[26px] font-bold text-white lg:text-[28px]">
-                  Actually improve it
-                </h3>
-                <p className="text-base leading-[1.62] text-haze">
-                  Knowing isn&apos;t fixing. The monthly plan is where we make
-                  the changes, keep watching the answers, and show you the
-                  difference month by month.
-                </p>
-                <div className="mt-auto grid gap-3 pt-1 sm:grid-cols-2">
-                  <PriceTile
-                    name="Sustain"
-                    price={site.prices.sustain}
-                    monthly
-                    tone="dark"
-                  />
-                  <PriceTile
-                    name="Grow"
-                    price={site.prices.grow}
-                    monthly
-                    tone="leap"
-                  />
-                </div>
-              </HoverCard>
+              <PlanPreview plan={plans.comprehensive} featured />
             </Reveal>
           </div>
         </Section>
@@ -585,7 +537,11 @@ export default function Home() {
           id="start"
           title="Find out what AI says about you"
           body="It takes one short call to get started, and you'll know more about your AI visibility than most of your competitors know about theirs."
-          primary={{ label: "Book your free check", href: bookingHref }}
+          primary={{
+            label: "Book your free check",
+            href: bookingHref,
+            external: true,
+          }}
           secondary={{
             label: "Or message us on WhatsApp",
             href: site.contact.whatsappHref,
@@ -600,52 +556,34 @@ export default function Home() {
   )
 }
 
-function PriceTile({
-  name,
-  price,
-  monthly,
-  tone = "light",
+function PlanPreview({
+  plan,
+  featured,
 }: {
-  name: string
-  price: string
-  monthly?: boolean
-  tone?: "light" | "dark" | "leap"
+  plan: (typeof plans)[keyof typeof plans]
+  featured?: boolean
 }) {
   return (
-    <div
+    <HoverCard
       className={cn(
-        "rounded-xl p-4 transition-transform duration-300 hover:-translate-y-1 hover:-rotate-1",
-        tone === "light" && "border border-line bg-white",
-        tone === "dark" && "border border-slate bg-ink-card",
-        tone === "leap" && "bg-leap"
+        "flex h-full flex-col gap-4 rounded-[20px] p-7 lg:p-9",
+        featured ? "border-[3px] border-clarity bg-[#f2f9fd]" : "bg-paper"
       )}
     >
-      <p
-        className={cn(
-          "text-[15px] font-bold",
-          tone === "dark" ? "text-white" : "text-ink"
-        )}
-      >
-        {name}
-      </p>
-      <p
-        className={cn(
-          "mt-1.5 font-heading text-[22px] font-bold",
-          tone === "dark" ? "text-white" : "text-ink"
-        )}
-      >
-        {price}
-        {monthly && (
-          <span
-            className={cn(
-              "text-sm font-medium",
-              tone === "dark" ? "text-blue-tint" : "text-umber-light"
-            )}
-          >
-            /mo
+      <Eyebrow className="tracking-[1.2px]">{plan.badge}</Eyebrow>
+      <h3 className="font-heading text-[26px] leading-tight font-bold text-ink lg:text-[28px]">
+        {plan.name}
+      </h3>
+      <p className="text-base leading-[1.62] text-slate">{plan.subhead}</p>
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-2">
+        <p className="flex items-baseline gap-2">
+          <span className="font-heading text-[36px] leading-none font-bold text-ink">
+            {plan.price}
           </span>
-        )}
-      </p>
-    </div>
+          <span className="text-base text-caption">{plan.period}</span>
+        </p>
+        <EngineIcons engines={plan.engines} />
+      </div>
+    </HoverCard>
   )
 }

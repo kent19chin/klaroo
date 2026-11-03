@@ -17,11 +17,14 @@ export function FaqList({
   className,
   size = "default",
   defaultOpen = 0,
+  equalHeight = false,
 }: {
   faqs: readonly Faq[]
   className?: string
   size?: "default" | "sm"
   defaultOpen?: number | null
+  /** Reserves two lines per question, so collapsed cards all match in height. */
+  equalHeight?: boolean
 }) {
   const [open, setOpen] = useState<number | null>(defaultOpen)
   const baseId = useId()
@@ -54,6 +57,7 @@ export function FaqList({
                 <span
                   className={cn(
                     "font-heading font-bold text-ink",
+                    equalHeight && "flex min-h-[2lh] items-center",
                     size === "sm"
                       ? "text-lg md:text-[19px]"
                       : "text-lg md:text-xl"
