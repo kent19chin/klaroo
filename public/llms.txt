@@ -20,7 +20,7 @@ Klarooo does not guarantee a place in an AI answer. We check what those systems 
 - Location: Toronto, Ontario, Canada
 - Audience: Canadian business owners and marketers
 - AI surfaces checked: ChatGPT, Gemini, Claude, Google AI answers
-- Contact: hello@klarooo.com
+- Contact: kent@klarooo.com
 
 ## Optional
 

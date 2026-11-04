@@ -19,8 +19,8 @@ export const site = {
   },
 
   contact: {
-    emailLabel: "[hello@klarooo.com]",
-    email: "hello@klarooo.com", // TODO: confirm
+    emailLabel: "Contact us",
+    email: "kent@klarooo.com",
     phoneLabel: "[+60 XX-XXX XXXX]",
     phoneHref: "tel:+60000000000", // TODO: real number
     whatsappHref: "https://wa.me/60000000000", // TODO: real WhatsApp number
@@ -30,7 +30,7 @@ export const site = {
 
   // Used by /terms and /privacy. Change here and both pages update.
   legal: {
-    lastUpdated: "2 November 2026",
+    lastUpdated: "4 November 2026",
     governingLaw: "Ontario, Canada",
     arbitrationSeat: "Toronto, Ontario",
     monthlyNoticeDays: 30, // notice to cancel a monthly plan
