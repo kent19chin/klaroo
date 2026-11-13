@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
+import { Analytics, AnalyticsNoscript } from "@/components/site/analytics";
 import { MotionProvider } from "@/components/site/motion";
 import { JsonLd } from "@/components/site/section";
 import { organizationJsonLd, site } from "@/lib/site";
@@ -41,6 +42,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
+        <AnalyticsNoscript />
+        <Analytics />
         <MotionProvider>{children}</MotionProvider>
         <JsonLd data={organizationJsonLd()} />
       </body>
