@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto"
 import { put } from "@vercel/blob"
 
 import { getAdmin } from "@/lib/auth"
+import { hasPublishToken } from "@/lib/publish-auth"
 
 const MAX_BYTES = 4 * 1024 * 1024 // Vercel caps request bodies at 4.5 MB.
 const EXTENSIONS: Record<string, string> = {
@@ -12,7 +13,7 @@ const EXTENSIONS: Record<string, string> = {
 }
 
 export async function POST(request: Request) {
-  if (!(await getAdmin())) {
+  if (!(await getAdmin()) && !hasPublishToken(request)) {
     return Response.json({ error: "Please sign in again." }, { status: 401 })
   }
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
