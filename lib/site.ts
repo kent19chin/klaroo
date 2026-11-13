@@ -8,6 +8,7 @@ export const site = {
   description:
     "Klarooo is a Toronto AEO / GEO consultancy. We help Canadian businesses get found, and get described correctly, when their customers ask ChatGPT, Gemini or Google's AI for a recommendation.",
   url: "https://klarooo.com",
+  gtmId: "GTM-WMV9P96Z",
 
   location: {
     city: "Toronto",
