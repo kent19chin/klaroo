@@ -1,3 +1,8 @@
+/**
+ * HTTP write API for this site's post store.
+ * Hosts (Vercel) do not publish posts; this route is the receiver AEO (or any
+ * client) POSTs to with `Authorization: Bearer $BLOG_PUBLISH_TOKEN`.
+ */
 import { revalidatePath } from "next/cache"
 
 import { hasPublishToken, publishTokenConfigured } from "@/lib/publish-auth"
@@ -41,7 +46,8 @@ export async function POST(request: Request) {
   const slug = slugify(String(body.slug ?? "") || title)
   const excerpt = String(body.excerpt ?? "").trim().slice(0, 400)
   const contentHtml = cleanPostHtml(String(body.content_html ?? ""))
-  const status = body.status === "draft" ? "draft" : "published"
+  // Draft unless the caller explicitly asks to publish (AEO default is draft).
+  const status = body.status === "published" ? "published" : "draft"
   const hasBody = contentHtml.replace(/<(?!img)[^>]*>/g, "").trim().length > 0
 
   if (!title) return Response.json({ error: "Add a title first." }, { status: 400 })
