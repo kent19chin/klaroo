@@ -89,6 +89,12 @@ export async function getPublishedPost(slug: string) {
   return post ?? null
 }
 
+export async function getPostBySlug(slug: string) {
+  if (!process.env.DATABASE_URL) return null
+  const [post] = await query<Post>("SELECT * FROM posts WHERE slug = $1", [slug])
+  return post ?? null
+}
+
 export async function savePost(
   id: string | null,
   fields: {
